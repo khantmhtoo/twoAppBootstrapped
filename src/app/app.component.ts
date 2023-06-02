@@ -18,6 +18,8 @@ export class AppComponent {
     private readonly notiService: NotiService,
     private cd: ChangeDetectorRef,
     private appRef: ApplicationRef,
+
+    // These two is just use for creating bootstrap application in event based
     private platformRef: PlatformRef,
     private ngZone: NgZone
   ) {}

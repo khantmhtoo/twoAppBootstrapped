@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -11,8 +11,14 @@ export class NotiService {
   notiMsg$ = this.notiMsgSB$.asObservable();
   notiSignal = toSignal<any[], any[]>(this.notiMsg$, { initialValue: [] });
 
+  constructor() {}
+
   sendNoti() {
     this.notiMsg = ['New Msg', ...this.notiMsg];
+    this.notiMsgSB$.next(this.notiMsg);
+  }
+
+  updateNewNoti() {
     this.notiMsgSB$.next(this.notiMsg);
   }
 }
